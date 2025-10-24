@@ -1,0 +1,25 @@
+{
+  "name": "code2",
+  "version": "1.0.0",
+  "description": "HFU Module: Code2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Th3D0c0/Code2.git"
+  },
+  "author": "Christian Korreng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Th3D0c0/Code2/issues"
+  },
+  "homepage": "https://github.com/Th3D0c0/Code2#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "typescript-eslint": "^8.46.2"
+  }
+}

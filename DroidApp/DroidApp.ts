@@ -24,11 +24,11 @@ export namespace DroidController {
      */
 
     type Output = { module: string, method: string, data: string }
-    // let command: number = 0
+    let command: number = 0
 
     export function getCommand(_droidState: any): Output | null {
         // You can choose the active task by changing the "task" value in the state object.
-        return moveRandom()
+        return moveOuterPerimiter()
     }
 
     // function forwardLeft(): { module: string, method: string, data: string } {
@@ -37,34 +37,44 @@ export namespace DroidController {
     // }
 
     function moveOuterPerimiter(): Output{
-        const randomNumber: number = Math.floor(Math.random() * 5);
         let output: Output = { module: "Chassis", method: "move", data: "forward" }
 
-        
-    }
-
-    function moveRandom(): Output {
-        const randomNumber: number = Math.floor(Math.random() * 5);
-        let output: Output = { module: "Chassis", method: "move", data: "forward" }
-        switch (randomNumber) {
+        switch (command){
             case 0:
                 output = moveForward()
-                break;
+                command++
             case 1:
-                output = moveBackward()
-                break;
-            case 2:
-                output = moveRight()
-                break;
-            case 3:
+                output = moveForward()
+                command++
+            case 2: 
                 output = moveLeft()
-                break;
-            case 4:
-                output = stop()
-                break;
+                command++
         }
         return output
     }
+
+    // function moveRandom(): Output {
+    //     const randomNumber: number = Math.floor(Math.random() * 5);
+    //     let output: Output = { module: "Chassis", method: "move", data: "forward" }
+    //     switch (randomNumber) {
+    //         case 0:
+    //             output = moveForward()
+    //             break;
+    //         case 1:
+    //             output = moveBackward()
+    //             break;
+    //         case 2:
+    //             output = moveRight()
+    //             break;
+    //         case 3:
+    //             output = moveLeft()
+    //             break;
+    //         case 4:
+    //             output = stop()
+    //             break;
+    //     }
+    //     return output
+    // }
 
     // function moveCircle(): Output{
     //     let output: { module: string, method: string, data: string } = { module: "Chassis", method: "move", data: "forward" }
@@ -85,20 +95,20 @@ export namespace DroidController {
         // Always moves forward
         return { module: "Chassis", method: "move", data: "forward" };
     }
-    function moveBackward(): { module: string, method: string, data: string } {
-        // Always moves forward
-        return { module: "Chassis", method: "move", data: "back" };
-    }
-    function moveRight(): { module: string, method: string, data: string } {
-        // Always moves forward
-        return { module: "Chassis", method: "move", data: "right" };
-    }
+    // function moveBackward(): { module: string, method: string, data: string } {
+    //     // Always moves forward
+    //     return { module: "Chassis", method: "move", data: "back" };
+    // }
+    // function moveRight(): { module: string, method: string, data: string } {
+    //     // Always moves forward
+    //     return { module: "Chassis", method: "move", data: "right" };
+    // }
     function moveLeft(): { module: string, method: string, data: string } {
         // Always moves forward
         return { module: "Chassis", method: "move", data: "left" };
     }
-    function stop(): { module: string, method: string, data: string } {
-        // Always moves forward
-        return { module: "Chassis", method: "move", data: "stop" };
-    }
+    // function stop(): { module: string, method: string, data: string } {
+    //     // Always moves forward
+    //     return { module: "Chassis", method: "move", data: "stop" };
+    // }
 }

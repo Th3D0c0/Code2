@@ -17,41 +17,52 @@ export var DroidController;
     //     path: [],          // A calculated path for the droid to follow
     //     pathIndex: 0       // The current position in the path
     // };
-    // let command: number = 0
+    let command = 0;
     function getCommand(_droidState) {
         // You can choose the active task by changing the "task" value in the state object.
-        return moveRandom();
+        return moveOuterPerimiter();
     }
     DroidController.getCommand = getCommand;
     // function forwardLeft(): { module: string, method: string, data: string } {
     //     // Always moves forward
     // }
     function moveOuterPerimiter() {
-        const randomNumber = Math.floor(Math.random() * 5);
         let output = { module: "Chassis", method: "move", data: "forward" };
-    }
-    function moveRandom() {
-        const randomNumber = Math.floor(Math.random() * 5);
-        let output = { module: "Chassis", method: "move", data: "forward" };
-        switch (randomNumber) {
+        switch (command) {
             case 0:
                 output = moveForward();
-                break;
+                command++;
             case 1:
-                output = moveBackward();
-                break;
+                output = moveForward();
+                command++;
             case 2:
-                output = moveRight();
-                break;
-            case 3:
                 output = moveLeft();
-                break;
-            case 4:
-                output = stop();
-                break;
+                command++;
         }
         return output;
     }
+    // function moveRandom(): Output {
+    //     const randomNumber: number = Math.floor(Math.random() * 5);
+    //     let output: Output = { module: "Chassis", method: "move", data: "forward" }
+    //     switch (randomNumber) {
+    //         case 0:
+    //             output = moveForward()
+    //             break;
+    //         case 1:
+    //             output = moveBackward()
+    //             break;
+    //         case 2:
+    //             output = moveRight()
+    //             break;
+    //         case 3:
+    //             output = moveLeft()
+    //             break;
+    //         case 4:
+    //             output = stop()
+    //             break;
+    //     }
+    //     return output
+    // }
     // function moveCircle(): Output{
     //     let output: { module: string, method: string, data: string } = { module: "Chassis", method: "move", data: "forward" }
     //     if (command % 2 == 0) {
@@ -70,21 +81,21 @@ export var DroidController;
         // Always moves forward
         return { module: "Chassis", method: "move", data: "forward" };
     }
-    function moveBackward() {
-        // Always moves forward
-        return { module: "Chassis", method: "move", data: "back" };
-    }
-    function moveRight() {
-        // Always moves forward
-        return { module: "Chassis", method: "move", data: "right" };
-    }
+    // function moveBackward(): { module: string, method: string, data: string } {
+    //     // Always moves forward
+    //     return { module: "Chassis", method: "move", data: "back" };
+    // }
+    // function moveRight(): { module: string, method: string, data: string } {
+    //     // Always moves forward
+    //     return { module: "Chassis", method: "move", data: "right" };
+    // }
     function moveLeft() {
         // Always moves forward
         return { module: "Chassis", method: "move", data: "left" };
     }
-    function stop() {
-        // Always moves forward
-        return { module: "Chassis", method: "move", data: "stop" };
-    }
+    // function stop(): { module: string, method: string, data: string } {
+    //     // Always moves forward
+    //     return { module: "Chassis", method: "move", data: "stop" };
+    // }
 })(DroidController || (DroidController = {}));
 //# sourceMappingURL=DroidApp.js.map

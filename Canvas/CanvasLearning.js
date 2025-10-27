@@ -22,15 +22,15 @@ var CanvasLearning;
         crc2.fillStyle = "#539c99ff";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         // -------Triangle Art-----------
-        // for (let i:number = 0; i < 200; i++){
-        //     const maxX: number = canvas.width
-        //     const maxY: number = canvas.height
-        //     const p1: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
-        //     const p2: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
-        //     const p3: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
-        //     const colors: string[] = ["green", "yellow", "blue", "red"]
-        //     drawTriangle(crc2, p1, p2, p3, colors[Math.floor(Math.random() * colors.length + 1)])
-        // }
+        for (let i = 0; i < 200; i++) {
+            const maxX = canvas.width;
+            const maxY = canvas.height;
+            const p1 = { x: Math.random() * maxX, y: Math.random() * maxY };
+            const p2 = { x: Math.random() * maxX, y: Math.random() * maxY };
+            const p3 = { x: Math.random() * maxX, y: Math.random() * maxY };
+            const colors = ["green", "yellow", "blue", "red"];
+            drawTriangle(crc2, p1, p2, p3, colors[Math.floor(Math.random() * colors.length + 1)]);
+        }
         const radiusString = prompt("Enter radius: ", "150");
         const nrSegmentsString = prompt("Enter number of Segments: ", "15");
         if (radiusString !== null && nrSegmentsString !== null) {

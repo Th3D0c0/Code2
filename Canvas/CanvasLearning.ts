@@ -30,17 +30,17 @@ namespace CanvasLearning {
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
         // -------Triangle Art-----------
-        // for (let i:number = 0; i < 200; i++){
-        //     const maxX: number = canvas.width
-        //     const maxY: number = canvas.height
-        //     const p1: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
-        //     const p2: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
-        //     const p3: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
+        for (let i:number = 0; i < 200; i++){
+            const maxX: number = canvas.width
+            const maxY: number = canvas.height
+            const p1: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
+            const p2: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
+            const p3: Vector2 = {x: Math.random() * maxX, y: Math.random() * maxY};
 
-        //     const colors: string[] = ["green", "yellow", "blue", "red"]
-        //     drawTriangle(crc2, p1, p2, p3, colors[Math.floor(Math.random() * colors.length + 1)])
-        // }
-
+            const colors: string[] = ["green", "yellow", "blue", "red"]
+            drawTriangle(crc2, p1, p2, p3, colors[Math.floor(Math.random() * colors.length + 1)])
+        }
+        
         const radiusString: string | null = prompt("Enter radius: ", "150")
         const nrSegmentsString: string | null = prompt("Enter number of Segments: ", "15")
         if (radiusString !== null && nrSegmentsString !== null) {

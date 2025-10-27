@@ -4,10 +4,14 @@ var CanvasLearning;
     document.addEventListener("DOMContentLoaded", hndlLoad);
     window.addEventListener("resize", hndlResize);
     function hndlLoad(_event) {
-        // const resetButton: HTMLButtonElement = document.getElementById("b1") as HTMLButtonElement
+        const resetButton = document.getElementById("b1");
+        resetButton.addEventListener("click", onButtonClicked);
         draw();
     }
     function hndlResize(_event) {
+        draw();
+    }
+    function onButtonClicked(_event) {
         draw();
     }
     function draw() {
@@ -17,6 +21,7 @@ var CanvasLearning;
         canvas.height = window.innerHeight;
         crc2.fillStyle = "#539c99ff";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+        // -------Triangle Art-----------
         // for (let i:number = 0; i < 200; i++){
         //     const maxX: number = canvas.width
         //     const maxY: number = canvas.height
@@ -26,11 +31,6 @@ var CanvasLearning;
         //     const colors: string[] = ["green", "yellow", "blue", "red"]
         //     drawTriangle(crc2, p1, p2, p3, colors[Math.floor(Math.random() * colors.length + 1)])
         // }
-        // crc2.save();
-        // crc2.fillStyle = "green"
-        // crc2.rotate(45 * Math.PI / 180);
-        // crc2.fillRect(250, 0, 250, 250);
-        // crc2.restore();
         const radiusString = prompt("Enter radius: ", "150");
         const nrSegmentsString = prompt("Enter number of Segments: ", "15");
         if (radiusString !== null && nrSegmentsString !== null) {
@@ -52,6 +52,7 @@ var CanvasLearning;
         _crc2.lineTo(_p1.x, _p1.y);
         _crc2.closePath();
         _crc2.fill();
+        _crc2.stroke();
     }
     function drawTriangleFan(_crc2, _radius, _nrOfFans, _center) {
         const radiusSlice = (2 * Math.PI) / _nrOfFans;

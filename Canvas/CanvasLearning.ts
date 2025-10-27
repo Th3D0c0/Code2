@@ -2,11 +2,18 @@ namespace CanvasLearning {
 
     document.addEventListener("DOMContentLoaded", hndlLoad)
     window.addEventListener("resize", hndlResize)
+    
     function hndlLoad(_event: Event): void {
-        // const resetButton: HTMLButtonElement = document.getElementById("b1") as HTMLButtonElement
+        const resetButton: HTMLButtonElement = document.getElementById("b1") as HTMLButtonElement
+        resetButton.addEventListener("click", onButtonClicked)
         draw()
     }
+
     function hndlResize(_event: Event): void {
+        draw()
+    }
+
+    function onButtonClicked(_event: Event): void{
         draw()
     }
 
@@ -22,6 +29,7 @@ namespace CanvasLearning {
         crc2.fillStyle = "#539c99ff";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
+        // -------Triangle Art-----------
         // for (let i:number = 0; i < 200; i++){
         //     const maxX: number = canvas.width
         //     const maxY: number = canvas.height
@@ -32,12 +40,6 @@ namespace CanvasLearning {
         //     const colors: string[] = ["green", "yellow", "blue", "red"]
         //     drawTriangle(crc2, p1, p2, p3, colors[Math.floor(Math.random() * colors.length + 1)])
         // }
-
-        // crc2.save();
-        // crc2.fillStyle = "green"
-        // crc2.rotate(45 * Math.PI / 180);
-        // crc2.fillRect(250, 0, 250, 250);
-        // crc2.restore();
 
         const radiusString: string | null = prompt("Enter radius: ", "150")
         const nrSegmentsString: string | null = prompt("Enter number of Segments: ", "15")
@@ -60,6 +62,7 @@ namespace CanvasLearning {
         _crc2.lineTo(_p1.x, _p1.y);
         _crc2.closePath();
         _crc2.fill();
+        _crc2.stroke();
     }
 
     function drawTriangleFan(_crc2: CanvasRenderingContext2D, _radius: number, _nrOfFans: number, _center: Vector2): void {

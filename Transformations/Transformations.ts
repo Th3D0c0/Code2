@@ -20,23 +20,27 @@ namespace Transformations {
         ctx.save()
         ctx.transform(1,0,0, 1, 1, 1)
         drawCoordinateSystem(ctx, "black")
+        console.log("Coordiante System after Transform: ", ctx.getTransform())
         ctx.restore()
 
         ctx.save()
         ctx.translate(200, 300)
         drawCoordinateSystem(ctx, "green")
+        console.log("Coordiante System after Translate: ", ctx.getTransform())
         ctx.restore()
 
         ctx.save()
         ctx.translate(200, 300)
         ctx.rotate( Math.PI)
         drawCoordinateSystem(ctx, "yellow")
+        console.log("Coordiante System after Translate and Rotate: ", ctx.getTransform())
         ctx.restore()
 
         ctx.save()
         ctx.translate(300, 400)
         ctx.scale(2,2)
         drawCoordinateSystem(ctx, "white")
+        console.log("Coordiante System after Translate and Scale: ", ctx.getTransform())
         ctx.restore()
 
     }

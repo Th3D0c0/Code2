@@ -11,12 +11,13 @@ namespace Farm {
         public constructor() {
             this.money = 100
             this.day = 1
+
             this.hay = 50
             this.grain = 25
             this.carrots = 40
             this.dogfood = 25
             this.catfood = 25
-            
+
             console.log(this.money, this.day)
         }
 
@@ -29,6 +30,8 @@ namespace Farm {
                     image1.onload = (): void => {
                         _ctx.drawImage(image1, _pos.x, _pos.y, _pos.x, _pos.y)
                     }
+                    const text1: string = "Hay Amount in Storage: " + this.hay
+                    _ctx.strokeText(text1, _pos.x + 600, _pos.y + 230)
                     foodCost = 15
                     break;
                 case FOODTYPE.CARROT:
@@ -37,6 +40,8 @@ namespace Farm {
                     image2.onload = (): void => {
                         _ctx.drawImage(image2, _pos.x, _pos.y)
                     }
+                    const text2: string = "Carrot Amount in Storage: " + this.carrots
+                    _ctx.strokeText(text2, _pos.x + 600, _pos.y + 230)
                     foodCost = 5
                     break;
                 case FOODTYPE.GRAIN:
@@ -45,6 +50,8 @@ namespace Farm {
                     image3.onload = (): void => {
                         _ctx.drawImage(image3, _pos.x, _pos.y)
                     }
+                    const text3: string = "Grain Amount in Storage: " + this.grain
+                    _ctx.strokeText(text3, _pos.x + 600, _pos.y + 230)
                     foodCost = 7
                     break;
                 case FOODTYPE.DOGFOOD:
@@ -53,6 +60,8 @@ namespace Farm {
                     image4.onload = (): void => {
                         _ctx.drawImage(image4, _pos.x, _pos.y)
                     }
+                    const text4: string = "Dog Food Amount in Storage: " + this.dogfood
+                    _ctx.strokeText(text4, _pos.x + 600, _pos.y + 230)
                     foodCost = 5
                     break;
                 case FOODTYPE.CATFOOD:
@@ -61,6 +70,8 @@ namespace Farm {
                     image5.onload = (): void => {
                         _ctx.drawImage(image5, _pos.x, _pos.y)
                     }
+                    const text5: string = "Cat Food Amount in Storage: " + this.catfood
+                    _ctx.strokeText(text5, _pos.x + 600, _pos.y + 230)
                     foodCost = 5
                     break;
                 }

@@ -20,9 +20,9 @@ namespace Farm {
     export type Vector2 = {x: number, y: number}
 
     export class Animal {
-        private type: ANIMALTYPES
-        private food: FOODTYPE
-        private foodAmount: number
+        public type: ANIMALTYPES
+        public food: FOODTYPE
+        public foodAmount: number
         private sound: string
         private img: string
         private name: string
@@ -109,5 +109,6 @@ namespace Farm {
                 _ctx.strokeText(songText1, _pos.x + 50, _pos.y + 380, 400)
             }
         }
+        public doSpecialThing():void{}
     }
 }

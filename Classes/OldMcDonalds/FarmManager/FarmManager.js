@@ -31,6 +31,7 @@ var Farm;
                     const text1 = "Hay Amount in Storage: " + this.hay;
                     _ctx.strokeText(text1, _pos.x + 600, _pos.y + 230);
                     foodCost = 15;
+                    this.hay--;
                     break;
                 case Farm.FOODTYPE.CARROT:
                     const image2 = new Image();
@@ -41,6 +42,7 @@ var Farm;
                     const text2 = "Carrot Amount in Storage: " + this.carrots;
                     _ctx.strokeText(text2, _pos.x + 600, _pos.y + 230);
                     foodCost = 5;
+                    this.carrots--;
                     break;
                 case Farm.FOODTYPE.GRAIN:
                     const image3 = new Image();
@@ -51,6 +53,7 @@ var Farm;
                     const text3 = "Grain Amount in Storage: " + this.grain;
                     _ctx.strokeText(text3, _pos.x + 600, _pos.y + 230);
                     foodCost = 7;
+                    this.grain--;
                     break;
                 case Farm.FOODTYPE.DOGFOOD:
                     const image4 = new Image();
@@ -61,6 +64,7 @@ var Farm;
                     const text4 = "Dog Food Amount in Storage: " + this.dogfood;
                     _ctx.strokeText(text4, _pos.x + 600, _pos.y + 230);
                     foodCost = 5;
+                    this.dogfood--;
                     break;
                 case Farm.FOODTYPE.CATFOOD:
                     const image5 = new Image();
@@ -71,6 +75,7 @@ var Farm;
                     const text5 = "Cat Food Amount in Storage: " + this.catfood;
                     _ctx.strokeText(text5, _pos.x + 600, _pos.y + 230);
                     foodCost = 5;
+                    this.dogfood--;
                     break;
             }
             return foodCost;

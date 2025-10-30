@@ -1,2 +1,17 @@
 Encapsulation: creating the functionality that the class needs but nothing more
 Abstraction: Modeling a class with features it needs
+
+5 Questions for every Object
+1. was hat es?
+2. was kann es?
+3. was weiß es?
+4. wer hält es?
+5. was ist es?
+
+The four principles of OOP
+1. Abstraction.
+2. Encapsulation.
+3. Inheritance.
+4. Polymorphism.
+
+-Super Classes are a generalization of a sub class and a sub class is a specialization of a super class.

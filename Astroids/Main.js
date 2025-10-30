@@ -9,8 +9,8 @@ var AsteroidsGame;
         if (!canvas) {
             return;
         }
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = 800;
+        canvas.height = 600;
         AsteroidsGame.crc2 = canvas.getContext("2d");
         AsteroidsGame.crc2.fillStyle = "black";
         AsteroidsGame.crc2.strokeStyle = "white";

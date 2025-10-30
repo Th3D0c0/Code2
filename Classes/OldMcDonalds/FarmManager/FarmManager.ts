@@ -33,6 +33,7 @@ namespace Farm {
                     const text1: string = "Hay Amount in Storage: " + this.hay
                     _ctx.strokeText(text1, _pos.x + 600, _pos.y + 230)
                     foodCost = 15
+                    this.hay--;
                     break;
                 case FOODTYPE.CARROT:
                     const image2: HTMLImageElement = new Image()
@@ -43,6 +44,7 @@ namespace Farm {
                     const text2: string = "Carrot Amount in Storage: " + this.carrots
                     _ctx.strokeText(text2, _pos.x + 600, _pos.y + 230)
                     foodCost = 5
+                    this.carrots--;
                     break;
                 case FOODTYPE.GRAIN:
                     const image3: HTMLImageElement = new Image()
@@ -52,7 +54,8 @@ namespace Farm {
                     }
                     const text3: string = "Grain Amount in Storage: " + this.grain
                     _ctx.strokeText(text3, _pos.x + 600, _pos.y + 230)
-                    foodCost = 7
+                    foodCost = 7;
+                    this.grain--;
                     break;
                 case FOODTYPE.DOGFOOD:
                     const image4: HTMLImageElement = new Image()
@@ -63,6 +66,7 @@ namespace Farm {
                     const text4: string = "Dog Food Amount in Storage: " + this.dogfood
                     _ctx.strokeText(text4, _pos.x + 600, _pos.y + 230)
                     foodCost = 5
+                    this.dogfood--
                     break;
                 case FOODTYPE.CATFOOD:
                     const image5: HTMLImageElement = new Image()
@@ -73,6 +77,7 @@ namespace Farm {
                     const text5: string = "Cat Food Amount in Storage: " + this.catfood
                     _ctx.strokeText(text5, _pos.x + 600, _pos.y + 230)
                     foodCost = 5
+                    this.dogfood--;
                     break;
                 }
                 return foodCost

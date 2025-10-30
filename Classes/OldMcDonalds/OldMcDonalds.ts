@@ -3,18 +3,32 @@ namespace Farm {
 
     let currentAnimal: number = 0
 
-    const cow: Animal = new Animal
-    cow.setAnimalType(ANIMALTYPES.COW)
-    const chicken: Animal = new Animal
-    chicken.setAnimalType(ANIMALTYPES.CHICKEN)
-    const dog: Animal = new Animal
-    dog.setAnimalType(ANIMALTYPES.DOG)
-    const horse: Animal = new Animal
-    horse.setAnimalType(ANIMALTYPES.HORSE)
-    const cat: Animal = new Animal
-    cat.setAnimalType(ANIMALTYPES.CAT)
-    const pig: Animal = new Animal
-    pig.setAnimalType(ANIMALTYPES.PIG)
+    const animals: Animal[] = [];
+
+    const cow: Cow = new Cow;
+    cow.setAnimalType(ANIMALTYPES.COW);
+    cow.setName("Cow");
+    animals.push(cow);
+    const chicken: Chicken = new Chicken;
+    chicken.setAnimalType(ANIMALTYPES.CHICKEN);
+    chicken.setName("Chicken");
+    animals.push(chicken);
+    const dog: Dog = new Dog;
+    dog.setAnimalType(ANIMALTYPES.DOG);
+    dog.setName("dog");
+    animals.push(dog);
+    const horse: Horse = new Horse;
+    horse.setAnimalType(ANIMALTYPES.HORSE);
+    horse.setName("horse");
+    animals.push(horse);
+    const cat: Cat = new Cat;
+    cat.setAnimalType(ANIMALTYPES.CAT);
+    cat.setName("cat");
+    animals.push(cat);
+    const pig: Pig = new Pig;
+    pig.setAnimalType(ANIMALTYPES.PIG);
+    pig.setName("pig");
+    animals.push(pig);
 
     const farmManager: FarmManager = new FarmManager
 
@@ -24,7 +38,7 @@ namespace Farm {
     }
 
     window.setInterval(changeAnimal, animalIntervalMS)
-    function changeAnimal(): void{
+    function changeAnimal(): void {
         currentAnimal++
         update()
     }
@@ -47,49 +61,20 @@ namespace Farm {
         ctx.strokeText(dayString, 700, 50)
 
         const v1: Vector2 = { x: 200, y: 200 }
-        const foodVec: Vector2 = { x: 600, y: 400}
+        const foodVec: Vector2 = { x: 600, y: 400 }
         let foodCost: number = 0
-        switch (currentAnimal){
-            case 0:
-                cow.setName("Cow")
-                cow.singSong(ctx, v1)
-                foodCost = farmManager.showFood(ctx, foodVec, FOODTYPE.HAY)
-                farmManager.hay -= 15
-                break;
-            case 1:
-                chicken.setName("Chicken")
-                chicken.singSong(ctx, v1)
-                foodCost = farmManager.showFood(ctx, foodVec, FOODTYPE.GRAIN)
-                farmManager.grain -= 14
-                break;
-            case 2:
-                dog.setName("dog")
-                dog.singSong(ctx, v1)
-                foodCost = farmManager.showFood(ctx, foodVec, FOODTYPE.DOGFOOD)
-                farmManager.dogfood -= 12
-                break;
-            case 3:
-                horse.setName("horse")
-                horse.singSong(ctx, v1)
-                foodCost = farmManager.showFood(ctx, foodVec, FOODTYPE.CARROT)
-                farmManager.carrots -= 13
-                break;
-            case 4:
-                cat.setName("cat")
-                cat.singSong(ctx, v1)
-                foodCost = farmManager.showFood(ctx, foodVec, FOODTYPE.CATFOOD)
-                farmManager.catfood -= 12
-                break;
-            case 5:
-                pig.setName("pig")
-                foodCost = farmManager.showFood(ctx, foodVec, FOODTYPE.CARROT)
-                pig.singSong(ctx, v1)
-                farmManager.carrots -= 13
-                break;
-            case 6:
-                farmManager.day++
-                currentAnimal = 0
+
+        if(currentAnimal == animals.length){
+            currentAnimal = 0;
+            farmManager.day++;
         }
+
+        const animal: Animal = animals[currentAnimal]
+        animal.singSong(ctx, v1);
+        animal.doSpecialThing();
+        foodCost = farmManager.showFood(ctx, foodVec, animal.food)
+
+
         const costString: string = "Cost: " + foodCost + "$"
         ctx.font = "30px Arial"
         ctx.strokeText(costString, 900, 400)

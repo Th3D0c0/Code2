@@ -106,6 +106,7 @@ var Farm;
                 _ctx.strokeText(songText1, _pos.x + 50, _pos.y + 380, 400);
             };
         }
+        doSpecialThing() { }
     }
     Farm.Animal = Animal;
 })(Farm || (Farm = {}));

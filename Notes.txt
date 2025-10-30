@@ -1,0 +1,2 @@
+Encapsulation: creating the functionality that the class needs but nothing more
+Abstraction: Modeling a class with features it needs

@@ -1,12 +1,11 @@
 "use strict";
 var AsteroidsGame;
 (function (AsteroidsGame) {
-    class Asteroid {
-        position;
-        velocity;
+    class Asteroid extends AsteroidsGame.Movable {
         type;
         size;
         constructor(_size, _position) {
+            super(_position);
             if (_position) {
                 this.position = _position;
             }
@@ -19,27 +18,9 @@ var AsteroidsGame;
             this.type = Math.floor(Math.random() * 4);
             this.size = _size;
         }
-        move(_timesplice) {
-            // console.log("Move Asteroid");
-            const offset = new AsteroidsGame.Vector(this.velocity.x, this.velocity.y);
-            offset.scale(_timesplice);
-            this.position.add(offset);
-            if (this.position.x < 0) {
-                this.position.x += AsteroidsGame.crc2.canvas.width;
-            }
-            if (this.position.y < 0) {
-                this.position.y += AsteroidsGame.crc2.canvas.height;
-            }
-            if (this.position.x > AsteroidsGame.crc2.canvas.width) {
-                this.position.x -= AsteroidsGame.crc2.canvas.width;
-            }
-            if (this.position.x > AsteroidsGame.crc2.canvas.height) {
-                this.position.y -= AsteroidsGame.crc2.canvas.height;
-            }
-        }
         draw() {
             // console.log("Asteroid draw");
-            AsteroidsGame.crc2.lineWidth = 1 / (this.size);
+            AsteroidsGame.crc2.lineWidth = AsteroidsGame.lineWidth / (this.size);
             AsteroidsGame.crc2.save();
             AsteroidsGame.crc2.translate(this.position.x, this.position.y);
             AsteroidsGame.crc2.scale(this.size, this.size);

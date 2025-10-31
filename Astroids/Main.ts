@@ -1,88 +1,99 @@
 namespace AsteroidsGame {
     export let crc2: CanvasRenderingContext2D;
-    document.addEventListener("DOMContentLoaded", hndlLoad)
+    export const lineWidth: number = 2;
+    document.addEventListener("DOMContentLoaded", hndlLoad);
 
-    const asteroids: Asteroid[] = [];
+    const movables: Movable[] = [];
 
     function hndlLoad(_event: Event): void {
-        console.log("Asteroids starting");
         const canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas) {
             return;
         }
-        canvas.width = 800;
+        canvas.width = 600;
         canvas.height = 600;
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
         crc2.fillStyle = "black";
         crc2.strokeStyle = "white";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
+        crc2.lineWidth = lineWidth;
 
-        // canvas.addEventListener("mousedown", loadLaser);
+        canvas.addEventListener("mousedown", shootProjectile);
         canvas.addEventListener("mouseup", shootLaser);
         // canvas.addEventListener("keypress", handleKeypress);
         // canvas.addEventListener("mousemove", setHeading);
 
         createPaths();
-        console.log("Asteroid paths: ", asteroidPaths);
 
         createAsteroids(5);
 
         const asteroid: Asteroid = new Asteroid(1);
-        console.log("Asteroid Test:", asteroid);
         asteroid.draw();
         asteroid.move(0.1);
 
         window.setInterval(update, 20);
     }
 
+    function shootProjectile(_event: MouseEvent): void {
+        const hotspot: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
+        const velocity: Vector = new Vector(0, 0);
+        velocity.random(100, 100);
+        const projectile: Projectile = new Projectile(hotspot, velocity);
+        movables.push(projectile);
+    }
+
     function shootLaser(_event: MouseEvent): void {
-        console.log("Shoot Laser");
         const hotspot: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
         const asteroidHit: Asteroid | null = getAsteroidHit(hotspot);
-        if(asteroidHit){
+        if (asteroidHit) {
             breakAsteroid(asteroidHit);
-            console.log("Asdteroid is Hit!");
         }
     }
 
-    function breakAsteroid(_asteroid: Asteroid): void{
-        if(_asteroid.size > 0.3){
-            for (let i:number = 0; i < 2; i++){
+    function breakAsteroid(_asteroid: Asteroid): void {
+        if (_asteroid.size > 0.3) {
+            for (let i: number = 0; i < 2; i++) {
                 const fragment: Asteroid = new Asteroid(_asteroid.size / 2, _asteroid.position.copy());
                 fragment.velocity.add(_asteroid.velocity);
-                asteroids.push(fragment);
+                movables.push(fragment);
             }
         }
 
-        const index: number = asteroids.indexOf(_asteroid);
-        asteroids.splice(index, 1); 
+        _asteroid.expendable = true;
     }
 
-    function getAsteroidHit(_hotspot: Vector): Asteroid | null{
-        for (const asteroid of asteroids){
-            if(asteroid.isHit(_hotspot)){
-                return asteroid;
+    function getAsteroidHit(_hotspot: Vector): Asteroid | null {
+        for (const movable of movables) {
+            if (movable instanceof Asteroid && movable.isHit(_hotspot)) {
+                return movable;
             }
         }
         return null;
     }
 
     function createAsteroids(_nAsteroids: number): void {
-        console.log("Creating Asteroids");
         for (let i: number = 0; i < _nAsteroids; i++) {
             const asteroid: Asteroid = new Asteroid(1);
-            asteroids.push(asteroid);
+            movables.push(asteroid);
         }
     }
 
     function update(): void {
-        console.log("Update");
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
-        for (const asteroid of asteroids) {
-            asteroid.move(1 / 50);
-            asteroid.draw();
+        for (const movable of movables) {
+            movable.move(1 / 50);
+            movable.draw();
         }
 
+        deleteExpandable();
+    }
+
+    function deleteExpandable(): void {
+        for (let i: number = movables.length - 1; i >= 0; i--) {
+            if (movables[i].expendable == true) {
+                movables.splice(i, 1);
+            }
+        }
     }
 }

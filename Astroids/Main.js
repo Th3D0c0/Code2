@@ -29,8 +29,7 @@ var AsteroidsGame;
     }
     function shootProjectile(_event) {
         const hotspot = new AsteroidsGame.Vector(_event.clientX - AsteroidsGame.crc2.canvas.offsetLeft, _event.clientY - AsteroidsGame.crc2.canvas.offsetTop);
-        const velocity = new AsteroidsGame.Vector(0, 0);
-        velocity.random(100, 100);
+        const velocity = AsteroidsGame.Vector.getRandom(100, 100);
         const projectile = new AsteroidsGame.Projectile(hotspot, velocity);
         movables.push(projectile);
     }

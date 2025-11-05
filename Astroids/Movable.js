@@ -33,8 +33,7 @@ var AsteroidsGame;
                 this.position.y -= AsteroidsGame.crc2.canvas.height;
             }
         }
-        draw() {
-        }
+        draw() { }
     }
     AsteroidsGame.Movable = Movable;
 })(AsteroidsGame || (AsteroidsGame = {}));

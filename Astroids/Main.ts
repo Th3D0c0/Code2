@@ -36,8 +36,7 @@ namespace AsteroidsGame {
 
     function shootProjectile(_event: MouseEvent): void {
         const hotspot: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
-        const velocity: Vector = new Vector(0, 0);
-        velocity.random(100, 100);
+        const velocity: Vector = Vector.getRandom(100,100);
         const projectile: Projectile = new Projectile(hotspot, velocity);
         movables.push(projectile);
     }

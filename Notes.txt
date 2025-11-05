@@ -15,3 +15,6 @@ The four principles of OOP
 4. Polymorphism.
 
 -Super Classes are a generalization of a sub class and a sub class is a specialization of a super class.
+
+-Liskov’schen substitution principle:
+    A derived class must be substitutable for its base class without altering the correctness of the program.

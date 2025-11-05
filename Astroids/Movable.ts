@@ -1,5 +1,5 @@
 namespace AsteroidsGame {
-    export class Movable {
+    export abstract class Movable {
         public position: Vector;
         public velocity: Vector;
         public expendable: boolean = false;
@@ -35,7 +35,6 @@ namespace AsteroidsGame {
             }
         }
 
-        public draw(): void {
-        }
+        public draw(): void {}
     }
 }

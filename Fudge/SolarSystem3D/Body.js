@@ -5,7 +5,6 @@ var Test;
     class Body extends f.Node {
         compMesh;
         cmpMaterial;
-        cmpTransform;
         mesh;
         material;
         constructor(_name) {

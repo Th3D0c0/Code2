@@ -25,16 +25,16 @@ var Test;
             this.orbit = 0;
             this.mesh = new f.MeshSphere(_name + "Mesh", 32, 32);
             this.cmpMesh = new f.ComponentMesh(this.mesh);
-            this.cmpMesh.mtxWorld.scale(new f.Vector3(3, 3, 3));
-            this.cmpMesh.mtxPivot.translateX(this.distance);
             this.addComponent(this.cmpMesh);
-            this.material = new f.Material(_name + "Material", f.ShaderLit);
+            this.cmpMesh.mtxPivot.scale(new f.Vector3(this.size, this.size, this.size));
+            this.material = new f.Material(_name + "Material", f.ShaderLit, new f.CoatColored(f.Color.CSS(this.color)));
             this.cmpMaterial = new f.ComponentMaterial(this.material);
             this.addComponent(this.cmpMaterial);
             this.cmpBodyTransform = new f.ComponentTransform();
             this.addComponent(this.cmpBodyTransform);
+            this.mtxLocal.translateX(this.distance);
         }
-        update(_matrix) {
+        update() {
             const rotationSpeed = 360 / 5;
             const angle = rotationSpeed * f.Loop.timeFrameGame / 1000;
             this.mtxLocal.rotateY(angle);

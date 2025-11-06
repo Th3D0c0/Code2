@@ -27,20 +27,20 @@ namespace Test {
 
             this.mesh = new f.MeshSphere(_name + "Mesh", 32, 32);
             this.cmpMesh = new f.ComponentMesh(this.mesh);
-            this.cmpMesh.mtxWorld.scale(new f.Vector3(3, 3, 3));
-            this.cmpMesh.mtxPivot.translateX(this.distance);
             this.addComponent(this.cmpMesh);
-
-            this.material = new f.Material(_name + "Material", f.ShaderLit);
+            this.cmpMesh.mtxPivot.scale(new f.Vector3(this.size, this.size, this.size));
+            
+            this.material = new f.Material(_name + "Material", f.ShaderLit, new f.CoatColored(f.Color.CSS(this.color)));
             this.cmpMaterial = new f.ComponentMaterial(this.material);
             this.addComponent(this.cmpMaterial);
-
+            
             this.cmpBodyTransform = new f.ComponentTransform();
             this.addComponent(this.cmpBodyTransform);
+            this.mtxLocal.translateX(this.distance);
 
         }
 
-        public update(_matrix?: f.Matrix4x4): void {
+        public update(): void {
             const rotationSpeed: number = 360 / 5;
             const angle: number = rotationSpeed * f.Loop.timeFrameGame / 1000;
 
